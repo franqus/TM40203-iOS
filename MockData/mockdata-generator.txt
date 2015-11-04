@@ -1,0 +1,14 @@
+{
+  query: '{{random("lorem", "ipsum", "est")}}',
+  results:
+  [
+  '{{repeat(2, 7)}}',
+  {
+    result: '{{lorem(1, "paragraphs")}}',
+    date: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    source: '{{random("SourceA", "SourceB", "SourceC")}}'
+  }
+]
+}
+
+http://www.json-generator.com/
