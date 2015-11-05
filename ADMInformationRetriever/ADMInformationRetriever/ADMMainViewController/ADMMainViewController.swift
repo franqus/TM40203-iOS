@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ADMMainViewController: UIViewController,UITextFieldDelegate
+class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource
 {
 	
 	@IBOutlet weak var tfSearch: UITextField!
@@ -19,7 +19,7 @@ class ADMMainViewController: UIViewController,UITextFieldDelegate
 	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		let manager = ADMInformationManager(mockFilename: "mockdata")
+		manager = ADMInformationManager(mockFilename: "mockdata")
 		print(manager)
 	}
 
@@ -40,6 +40,29 @@ class ADMMainViewController: UIViewController,UITextFieldDelegate
 	{
 		print("\(__FUNCTION__)")
 	}
-
+	
+	
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+	{
+		return self.manager.results.count
+	}
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+	{
+		var cell:UITableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewCell")! as UITableViewCell
+		
+//		cell.textLabel?.text = self.items[indexPath.row]
+		
+		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+	{
+		
+	}
+	
+	
+	
 }
 
