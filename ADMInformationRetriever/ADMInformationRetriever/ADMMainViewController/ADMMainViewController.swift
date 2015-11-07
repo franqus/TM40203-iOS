@@ -42,24 +42,38 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
         self.manager.sendQuery(query, server: self.manager.servers.first!, index: 0, length: documentsPerSection)
         self.tvResults.reloadData()
 	}
-	
-	
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.manager.query.totalResults/documentsPerSection+1
+    }
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		//return self.manager.results.count
-        return documentsPerSection
+        let followingDocs: Int = self.manager.query.totalResults-section*documentsPerSection
+        return min(followingDocs,documentsPerSection)
 	}
 	
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSString string
+        return String(format: "%i", section*documentsPerSection)
     }
     
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		var cell:UITableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewCell")! as UITableViewCell
+		let cell:UITableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewCell")! as UITableViewCell
 		
-//		cell.textLabel?.text = self.items[indexPath.row]
+        let docNum: Int = indexPath.section*documentsPerSection+indexPath.row
+        var lastDocNum: Int = self.manager.query.results.count-1
+        
+        var document: ADMDocument
+        
+        while(docNum>lastDocNum){
+            self.manager.sendQuery(self.manager.query, server: self.manager.servers.first!, index: lastDocNum+1, length: documentsPerSection)
+            lastDocNum = self.manager.query.results.count-1
+        }
+        
+        document = self.manager.query.results[docNum]
+        
+		cell.textLabel?.text = document.title
         
 		return cell
 	}
