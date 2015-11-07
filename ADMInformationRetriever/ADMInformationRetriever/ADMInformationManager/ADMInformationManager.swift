@@ -10,21 +10,23 @@ import UIKit
 
 class ADMInformationManager: NSObject
 {
-	var endpointURL: String
-	var query: String
-	var results: Array<NSDictionary>
-	
+	//var endpointURL: String
+	//var query: String
+	//var results: Array<NSDictionary>
+
+    var servers: Array<ADMServer> = [ADMServer]()
+    
 //	init(endpointURL: String)
 //	{
 //		super.init()
 //	}
-	init(url: String)
+	override init()
 	{
-		endpointURL = url
-		query = ""
-		results = [NSDictionary]()
+		//endpointURL = url
+		//query = ""
+		//results = [NSDictionary]()
 		
-		super.init()
+		//super.init()
 	}
 	
 	init(mockFilename: String)
@@ -52,10 +54,14 @@ class ADMInformationManager: NSObject
 		}
 	}
 	
-	func searchQuery(query: String)
+/*	func searchQuery(query: String)
 	{
 		print("foo")
-	}
+	}*/
+    
+    func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int) -> Bool{
+        return query.send(index, length: length, url: server.url)
+    }
 	
 //	override var descripton : String
 //	{
