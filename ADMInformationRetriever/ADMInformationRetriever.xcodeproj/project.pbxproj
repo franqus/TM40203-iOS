@@ -15,6 +15,10 @@
 		40435D4C1BEA9F4A00B2E31C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40435D471BEA9F4A00B2E31C /* Info.plist */; };
 		40435D4F1BEA9FA700B2E31C /* ADMInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40435D4E1BEA9FA700B2E31C /* ADMInformationManager.swift */; };
 		40435D531BEA9FEC00B2E31C /* mockdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 40435D521BEA9FEC00B2E31C /* mockdata.json */; };
+		B9BEB7E51BEE1200001DF1E5 /* ADMServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */; settings = {ASSET_TAGS = (); }; };
+		B9BEB7E71BEE1216001DF1E5 /* ADMQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */; settings = {ASSET_TAGS = (); }; };
+		B9BEB7E91BEE1224001DF1E5 /* ADMDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */; settings = {ASSET_TAGS = (); }; };
+		B9BEB7EB1BEE1234001DF1E5 /* ADMAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7EA1BEE1234001DF1E5 /* ADMAuthor.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		40435D471BEA9F4A00B2E31C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40435D4E1BEA9FA700B2E31C /* ADMInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMInformationManager.swift; sourceTree = "<group>"; };
 		40435D521BEA9FEC00B2E31C /* mockdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata.json; sourceTree = "<group>"; };
+		B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMServer.swift; sourceTree = "<group>"; };
+		B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMQuery.swift; sourceTree = "<group>"; };
+		B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDocument.swift; sourceTree = "<group>"; };
+		B9BEB7EA1BEE1234001DF1E5 /* ADMAuthor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMAuthor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,10 @@
 			children = (
 				40435D3D1BEA9F3700B2E31C /* ADMMainViewController */,
 				40435D4D1BEA9F5200B2E31C /* ADMInformationManager */,
+				B9BEB7E31BEE11B9001DF1E5 /* ADMServer */,
+				B9BEB7E21BEE11B9001DF1E5 /* ADMQuery */,
+				B9BEB7E11BEE11B9001DF1E5 /* ADMDocument */,
+				B9BEB7E01BEE11B9001DF1E5 /* ADMAuthor */,
 				40435D401BEA9F4A00B2E31C /* Supporting Files */,
 			);
 			path = ADMInformationRetriever;
@@ -102,6 +114,38 @@
 				40435D521BEA9FEC00B2E31C /* mockdata.json */,
 			);
 			path = MockData;
+			sourceTree = "<group>";
+		};
+		B9BEB7E01BEE11B9001DF1E5 /* ADMAuthor */ = {
+			isa = PBXGroup;
+			children = (
+				B9BEB7EA1BEE1234001DF1E5 /* ADMAuthor.swift */,
+			);
+			path = ADMAuthor;
+			sourceTree = "<group>";
+		};
+		B9BEB7E11BEE11B9001DF1E5 /* ADMDocument */ = {
+			isa = PBXGroup;
+			children = (
+				B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */,
+			);
+			path = ADMDocument;
+			sourceTree = "<group>";
+		};
+		B9BEB7E21BEE11B9001DF1E5 /* ADMQuery */ = {
+			isa = PBXGroup;
+			children = (
+				B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */,
+			);
+			path = ADMQuery;
+			sourceTree = "<group>";
+		};
+		B9BEB7E31BEE11B9001DF1E5 /* ADMServer */ = {
+			isa = PBXGroup;
+			children = (
+				B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */,
+			);
+			path = ADMServer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,9 +221,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9BEB7E71BEE1216001DF1E5 /* ADMQuery.swift in Sources */,
 				40435D481BEA9F4A00B2E31C /* AppDelegate.swift in Sources */,
 				40435D3F1BEA9F3700B2E31C /* ADMMainViewController.swift in Sources */,
+				B9BEB7E91BEE1224001DF1E5 /* ADMDocument.swift in Sources */,
 				40435D4F1BEA9FA700B2E31C /* ADMInformationManager.swift in Sources */,
+				B9BEB7E51BEE1200001DF1E5 /* ADMServer.swift in Sources */,
+				B9BEB7EB1BEE1234001DF1E5 /* ADMAuthor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +377,7 @@
 				40435D3B1BEA364D00B2E31C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
