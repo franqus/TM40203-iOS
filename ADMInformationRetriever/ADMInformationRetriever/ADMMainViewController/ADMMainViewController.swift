@@ -14,6 +14,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	@IBOutlet weak var tfSearch: UITextField!
 	@IBOutlet weak var tvResults: UITableView!
 	var manager: ADMInformationManager!
+    let documentsPerSection: Int = 10
 	
 	override func viewDidLoad()
 	{
@@ -33,27 +34,33 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	{
 		print("\(__FUNCTION__)")
 		
-//		self.manager.searchQuery(textField.text!)
 	}
 	
 	@IBAction func btnSearch_tapped(sender: AnyObject)
 	{
-		print("\(__FUNCTION__)")
+        let query: ADMQuery = ADMQuery.init(query: tfSearch.text!)
+        self.manager.sendQuery(query, server: self.manager.servers.first!, index: 0, length: documentsPerSection)
+        self.tvResults.reloadData()
 	}
 	
 	
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		return self.manager.results.count
+		//return self.manager.results.count
+        return documentsPerSection
 	}
 	
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return NSString string
+    }
+    
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
 		var cell:UITableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewCell")! as UITableViewCell
 		
 //		cell.textLabel?.text = self.items[indexPath.row]
-		
+        
 		return cell
 	}
 	
