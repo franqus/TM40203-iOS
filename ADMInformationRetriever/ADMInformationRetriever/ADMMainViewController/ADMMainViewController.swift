@@ -33,7 +33,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	{
 		print("\(__FUNCTION__)")
 		
-		self.manager.searchQuery(textField.text!)
+//		self.manager.searchQuery(textField.text!)
 	}
 	
 	@IBAction func btnSearch_tapped(sender: AnyObject)

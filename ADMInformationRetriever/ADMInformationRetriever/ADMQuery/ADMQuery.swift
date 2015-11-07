@@ -24,7 +24,7 @@ class ADMQuery: NSObject {
         request.HTTPMethod = "GET"
         var response: NSURLResponse
         var connection: NSURLConnection
-        NSURLConnection.start(connection)
+//        NSURLConnection.start(connection)
         return true
     }
 }

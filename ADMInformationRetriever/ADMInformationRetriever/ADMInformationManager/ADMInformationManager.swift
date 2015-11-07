@@ -13,7 +13,7 @@ class ADMInformationManager: NSObject
     var servers: Array<ADMServer> = [ADMServer]()
     
 
-    var query: ADMQuery = ADMQuery()
+    var query: ADMQuery = ADMQuery(query: "")
 	var results: [String] = Array()
 	
 	init(mockFilename: String)
@@ -23,7 +23,7 @@ class ADMInformationManager: NSObject
 		let mockServer = ADMServer(name: "offline", url: "localhost")
 		self.servers = [mockServer]
 		
-		self.query = ADMQuery()
+		self.query = ADMQuery(query: "")
 		self.results = Array()
 		
 		let bundle = NSBundle.mainBundle()
@@ -36,7 +36,9 @@ class ADMInformationManager: NSObject
 			{
 				print(jsonResult)
 //				var results = jsonResult.objectForKey("results") as! String
-				var result = getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
+				let result = getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
+				print(result)
+				
 //				results.appendContentsOf(jsonResult.objectForKey("results") as! Array)
 			}
 		}
@@ -46,9 +48,9 @@ class ADMInformationManager: NSObject
 		}
 	}
     
-    func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int) -> Bool{
-        return query.send(index, length: length, url: server.url)
-    }
+//    func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int) -> Bool{
+//        return query.send(index, length: length, url: server.url)
+//    }
 	
 	func getDocumentsForResult(results: [NSDictionary]) -> [ADMDocument]
 	{
@@ -56,8 +58,8 @@ class ADMInformationManager: NSObject
 		
 		for dict in results
 		{
-//			var doc = ADMDocument
-//			arrayDocuments.append(doc)
+			let doc = ADMDocument(id: dict["id"]! as! Int, journal: dict["journal"] as! String, title: dict["title"] as! String, authors: dict["authors"] as! Array<ADMAuthor>, institutions: dict["institutions"] as! String, abstract: dict["abstract"] as! String, pmid: dict["pmid"] as! String, url: "http://hcbi.nlm.nih.gov/pubmed/?term=", rank: dict["ranking"] as! Float)
+			arrayDocuments.append(doc)
 		}
 		
 		return arrayDocuments
