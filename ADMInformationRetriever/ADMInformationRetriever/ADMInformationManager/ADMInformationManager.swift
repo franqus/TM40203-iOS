@@ -10,31 +10,35 @@ import UIKit
 
 class ADMInformationManager: NSObject
 {
-	var endpointURL: String
-	var query: String
-	var results: Array<NSDictionary>
+	var servers: [ADMServer] = Array()
+	var query: ADMQuery = ADMQuery()
+	var results: [String] = Array()
 	
 //	init(endpointURL: String)
 //	{
 //		super.init()
 //	}
-	init(url: String)
-	{
-		endpointURL = url
-		query = ""
-		results = [NSDictionary]()
-		
-		super.init()
-	}
+//	init(url: String)
+//	{
+////		endpointURL = url
+//		query = ADMQuery()
+////		results = [NSDictionary]()
+//		
+//		super.init()
+//	}
 	
 	init(mockFilename: String)
 	{
-		endpointURL = "foo"
-		query = ""
-		results = [NSDictionary]()
+		super.init()
+		
+		let mockServer = ADMServer(name: "offline", url: "localhost")
+		self.servers = [mockServer]
+		
+		self.query = ADMQuery()
+		self.results = Array()
 		
 		let bundle = NSBundle.mainBundle()
-		let path = bundle.pathForResource("mockdata", ofType: "json")
+		let path = bundle.pathForResource("20151107_pubmed_mock", ofType: "json")
 		let data:NSData = NSData(contentsOfFile: path!)!
 
 		do
@@ -42,8 +46,9 @@ class ADMInformationManager: NSObject
 			if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary
 			{
 				print(jsonResult)
-				query = jsonResult.objectForKey("query") as! String
-				results.appendContentsOf(jsonResult.objectForKey("results") as! Array)
+//				var results = jsonResult.objectForKey("results") as! String
+				var result = getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
+//				results.appendContentsOf(jsonResult.objectForKey("results") as! Array)
 			}
 		}
 		catch
@@ -55,6 +60,19 @@ class ADMInformationManager: NSObject
 	func searchQuery(query: String)
 	{
 		print("foo")
+	}
+	
+	func getDocumentsForResult(results: [NSDictionary]) -> [ADMDocument]
+	{
+		var arrayDocuments = [ADMDocument]()
+		
+		for dict in results
+		{
+//			var doc = ADMDocument
+//			arrayDocuments.append(doc)
+		}
+		
+		return arrayDocuments
 	}
 	
 //	override var descripton : String
