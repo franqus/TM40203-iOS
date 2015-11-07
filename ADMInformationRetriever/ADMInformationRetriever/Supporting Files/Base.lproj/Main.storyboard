@@ -34,7 +34,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="8bj-1s-lkD" kind="show" id="7MA-I7-C5h"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="default">
@@ -87,7 +89,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Information Retriever" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tcp-hH-bVZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="IR App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tcp-hH-bVZ">
                                 <rect key="frame" x="20" y="18" width="414" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="7hp-Ns-6Nn"/>
@@ -255,6 +257,8 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="ITx-6H-wFD"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tfSearch" destination="Dmb-cF-Efv" id="uub-lJ-ZNV"/>
                         <outlet property="tvResults" destination="2g3-Hz-YHS" id="N06-xW-7dN"/>
@@ -262,7 +266,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304" y="429"/>
+            <point key="canvasLocation" x="741" y="1094"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Con-UX-Kcq">
+            <objects>
+                <viewController id="8bj-1s-lkD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8a5-0Z-CqZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="snj-by-WRh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eye-XI-ddJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kUf-dD-Nfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1504" y="1094"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9my-0H-4I7">
+            <objects>
+                <navigationController id="4Bo-2U-gYl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oVd-TP-yIq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="W7l-Cz-rxN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fFg-Al-g4y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14" y="1094"/>
         </scene>
     </scenes>
     <resources>

@@ -33,6 +33,8 @@ class ADMQuery: NSObject{
 				if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary
 				{
 					self.results = getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
+					self.totalResults = self.results.count
+					self.resultsPerPage = 10
 				}
 			}
 			catch
@@ -53,6 +55,13 @@ class ADMQuery: NSObject{
 		
 		for dict in results
 		{
+			var arrayAuthors = [ADMAuthor]()
+			for authorName in dict["authors"] as! Array<String>
+			{
+				let author = ADMAuthor(name: authorName)
+				arrayAuthors.append(author)
+			}
+			
 			let doc = ADMDocument(id: dict["id"]! as! Int, journal: dict["journal"] as! String, title: dict["title"] as! String, authors: dict["authors"] as! Array<ADMAuthor>, institutions: dict["institutions"] as! String, abstract: dict["abstract"] as! String, pmid: dict["pmid"] as! String, url: "http://hcbi.nlm.nih.gov/pubmed/?term=", rank: dict["ranking"] as! Float)
 			arrayDocuments.append(doc)
 		}
