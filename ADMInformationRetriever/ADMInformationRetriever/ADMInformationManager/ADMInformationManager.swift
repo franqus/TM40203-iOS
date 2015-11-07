@@ -26,48 +26,11 @@ class ADMInformationManager: NSObject
 		self.query = ADMQuery(query: "")
 		self.results = Array()
 		
-		let bundle = NSBundle.mainBundle()
-		let path = bundle.pathForResource("20151107_pubmed_mock", ofType: "json")
-		let data:NSData = NSData(contentsOfFile: path!)!
-
-		do
-		{
-			if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? NSDictionary
-			{
-				print(jsonResult)
-//				var results = jsonResult.objectForKey("results") as! String
-				let result = getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
-				print(result)
-				
-//				results.appendContentsOf(jsonResult.objectForKey("results") as! Array)
-			}
-		}
-		catch
-		{
-			print(error)
-		}
+		sendQuery(self.query, server: self.servers[0], index: 0, length: 0)
 	}
     
-//    func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int) -> Bool{
-//        return query.send(index, length: length, url: server.url)
-//    }
-	
-	func getDocumentsForResult(results: [NSDictionary]) -> [ADMDocument]
-	{
-		var arrayDocuments = [ADMDocument]()
-		
-		for dict in results
-		{
-			let doc = ADMDocument(id: dict["id"]! as! Int, journal: dict["journal"] as! String, title: dict["title"] as! String, authors: dict["authors"] as! Array<ADMAuthor>, institutions: dict["institutions"] as! String, abstract: dict["abstract"] as! String, pmid: dict["pmid"] as! String, url: "http://hcbi.nlm.nih.gov/pubmed/?term=", rank: dict["ranking"] as! Float)
-			arrayDocuments.append(doc)
-		}
-		
-		return arrayDocuments
-	}
-	
-//	override var descripton : String
-//	{
-//		return "helloo"
-//	}
+    func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int) -> Bool{
+        return query.send(index, length: length, urlString: server.url)
+    }
 	
 }
