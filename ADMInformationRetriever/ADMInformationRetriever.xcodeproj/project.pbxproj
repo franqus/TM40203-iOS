@@ -16,6 +16,7 @@
 		40435D4F1BEA9FA700B2E31C /* ADMInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40435D4E1BEA9FA700B2E31C /* ADMInformationManager.swift */; };
 		40435D531BEA9FEC00B2E31C /* mockdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 40435D521BEA9FEC00B2E31C /* mockdata.json */; };
 		40435D551BEE096100B2E31C /* 20151107_pubmed_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 40435D541BEE096100B2E31C /* 20151107_pubmed_mock.json */; };
+		40978CA31BEE993500104975 /* ADMDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978CA21BEE993500104975 /* ADMDetailViewController.swift */; };
 		B9BEB7E51BEE1200001DF1E5 /* ADMServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */; };
 		B9BEB7E71BEE1216001DF1E5 /* ADMQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */; };
 		B9BEB7E91BEE1224001DF1E5 /* ADMDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */; };
@@ -33,6 +34,7 @@
 		40435D4E1BEA9FA700B2E31C /* ADMInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMInformationManager.swift; sourceTree = "<group>"; };
 		40435D521BEA9FEC00B2E31C /* mockdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata.json; sourceTree = "<group>"; };
 		40435D541BEE096100B2E31C /* 20151107_pubmed_mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 20151107_pubmed_mock.json; path = ../../../../MockData/20151107_pubmed_mock.json; sourceTree = "<group>"; };
+		40978CA21BEE993500104975 /* ADMDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDetailViewController.swift; sourceTree = "<group>"; };
 		B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMServer.swift; sourceTree = "<group>"; };
 		B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMQuery.swift; sourceTree = "<group>"; };
 		B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDocument.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				40435D3D1BEA9F3700B2E31C /* ADMMainViewController */,
+				40978C9F1BEE98DC00104975 /* ADMDetailViewController */,
 				40435D4D1BEA9F5200B2E31C /* ADMInformationManager */,
 				B9BEB7E31BEE11B9001DF1E5 /* ADMServer */,
 				B9BEB7E21BEE11B9001DF1E5 /* ADMQuery */,
@@ -117,6 +120,14 @@
 				40435D521BEA9FEC00B2E31C /* mockdata.json */,
 			);
 			path = MockData;
+			sourceTree = "<group>";
+		};
+		40978C9F1BEE98DC00104975 /* ADMDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40978CA21BEE993500104975 /* ADMDetailViewController.swift */,
+			);
+			path = ADMDetailViewController;
 			sourceTree = "<group>";
 		};
 		B9BEB7E01BEE11B9001DF1E5 /* ADMAuthor */ = {
@@ -229,6 +240,7 @@
 				40435D481BEA9F4A00B2E31C /* AppDelegate.swift in Sources */,
 				40435D3F1BEA9F3700B2E31C /* ADMMainViewController.swift in Sources */,
 				B9BEB7E91BEE1224001DF1E5 /* ADMDocument.swift in Sources */,
+				40978CA31BEE993500104975 /* ADMDetailViewController.swift in Sources */,
 				40435D4F1BEA9FA700B2E31C /* ADMInformationManager.swift in Sources */,
 				B9BEB7E51BEE1200001DF1E5 /* ADMServer.swift in Sources */,
 				B9BEB7EB1BEE1234001DF1E5 /* ADMAuthor.swift in Sources */,
