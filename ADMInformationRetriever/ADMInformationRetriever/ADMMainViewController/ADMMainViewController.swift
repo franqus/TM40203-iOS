@@ -24,6 +24,10 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		print(manager)
 	}
 
+	override func viewWillAppear(animated: Bool) {
+		self.navigationController?.setNavigationBarHidden(true, animated: true)
+	}
+	
 	override func didReceiveMemoryWarning()
 	{
 		super.didReceiveMemoryWarning()
@@ -44,7 +48,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	}
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.manager.query.totalResults/documentsPerSection+1
+        return self.manager.query.totalResults/documentsPerSection
     }
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -78,12 +82,14 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		return cell
 	}
 	
-	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-	{
-		
+	
+	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 20
 	}
 	
-	
+//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+//	{
+//		
+//	}
 	
 }
-
