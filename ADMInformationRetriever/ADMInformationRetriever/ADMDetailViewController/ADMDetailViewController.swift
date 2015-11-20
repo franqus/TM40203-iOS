@@ -10,8 +10,8 @@ import UIKit
 
 class ADMDetailViewController: UITableViewController {
 
-	@IBOutlet weak var tvMain: UITextView!
-	@IBOutlet var doc: ADMDocument!
+	weak var tvMain: UITextView!
+	var doc: ADMDocument!
 	
     override func viewDidLoad()
 	{
@@ -119,13 +119,20 @@ class ADMDetailViewController: UITableViewController {
 			let vc = segue.destinationViewController as! ADMDetailPMIDViewController
 			if(doc != nil)
 			{
-//				vc.url = self.getURLForPMID(doc.pmid)
+//				let request: NSURLRequest = NSURLRequest(URL: self.getURLForPMID(doc.pmid))
+//				vc.wvMain.loadRequest(request)
+				vc.url = self.getURLForPMID(doc.pmid)
+				vc.title = doc.title
 			}
 		}
 	}
 	
 	func getURLForPMID(pmid: String) -> NSURL
 	{
-		return NSURL(fileURLWithPath: "http://pmidonline.com/?id="+doc.pmid)
+		let url = NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
+		return url!
+//		return NSURL(fileURLWithPath: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
+//		return NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
+		
 	}
 }

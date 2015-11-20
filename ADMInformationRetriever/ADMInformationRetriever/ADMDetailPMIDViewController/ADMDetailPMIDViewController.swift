@@ -10,11 +10,14 @@ import UIKit
 
 class ADMDetailPMIDViewController: UIViewController, UIWebViewDelegate {
 
+	var url: NSURL!
+	@IBOutlet weak var wvMain: UIWebView!
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-//		let request: NSURLRequest = NSURLRequest(URL: self.url)
-//		self.wvMain.loadRequest(request)
+		let request: NSURLRequest = NSURLRequest(URL: self.url)
+		self.wvMain.loadRequest(request)
         // Do any additional setup after loading the view.
     }
 

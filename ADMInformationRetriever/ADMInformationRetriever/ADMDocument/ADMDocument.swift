@@ -9,7 +9,7 @@
 import UIKit
 
 class ADMDocument: NSObject {
-    var id: Int
+    var id: String
     var journal: String
     var title: String
     var authors: Array<ADMAuthor> = [ADMAuthor]()
@@ -19,7 +19,7 @@ class ADMDocument: NSObject {
     var url: String
     var rank: Float
     
-	init(id: Int, journal: String, title: String, authors: Array<ADMAuthor>, institutions: String, abstract: String, pmid: String, url: String, rank: Float){
+	init(id: String, journal: String, title: String, authors: Array<ADMAuthor>, institutions: String, abstract: String, pmid: String, url: String, rank: Float){
         self.id = id
         self.journal = journal
         self.title = title
@@ -32,7 +32,7 @@ class ADMDocument: NSObject {
     }
 	
 	override init() {
-		self.id = 0
+		self.id = ""
 		self.journal = ""
 		self.title = ""
 		self.institutions = ""

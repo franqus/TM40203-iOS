@@ -8,13 +8,20 @@
 
 import UIKit
 
-class ADMServer: NSObject {
+class ADMServer: NSObject
+{
     var name: String
     var url: String
     
-    init(name: String, url: String){
+    init(name: String, url: String)
+	{
         self.url = url
         self.name = name
     }
+	
+	override var description:String
+	{
+		return String(format: "url:%@ name:%@", self.url, self.name)
+	}
 
 }
