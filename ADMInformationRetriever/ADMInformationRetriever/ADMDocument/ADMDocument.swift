@@ -31,6 +31,17 @@ class ADMDocument: NSObject {
         self.rank = rank
     }
 	
+	override init() {
+		self.id = 0
+		self.journal = ""
+		self.title = ""
+		self.institutions = ""
+		self.abstract = ""
+		self.pmid = ""
+		self.url = ""
+		self.rank = 0
+	}
+	
 	override var description:String {
 		return String(format: "id:%i \n journal:%@ \n title:%@ \n authors:%@ \n institutions:%@ \n abstract:%@ \n pmid:%@ \n ranking:%f", self.id, self.journal, self.title, self.authors, self.institutions, self.abstract, self.pmid, self.rank)
 	}

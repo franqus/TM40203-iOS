@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4038014A1BFDB07C00CB7F26 /* ADMDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403801491BFDB07C00CB7F26 /* ADMDetailTableViewCell.swift */; };
 		40435D3F1BEA9F3700B2E31C /* ADMMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40435D3E1BEA9F3700B2E31C /* ADMMainViewController.swift */; };
 		40435D481BEA9F4A00B2E31C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40435D411BEA9F4A00B2E31C /* AppDelegate.swift */; };
 		40435D491BEA9F4A00B2E31C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40435D421BEA9F4A00B2E31C /* Assets.xcassets */; };
@@ -16,6 +17,9 @@
 		40435D4F1BEA9FA700B2E31C /* ADMInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40435D4E1BEA9FA700B2E31C /* ADMInformationManager.swift */; };
 		40435D531BEA9FEC00B2E31C /* mockdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 40435D521BEA9FEC00B2E31C /* mockdata.json */; };
 		40435D551BEE096100B2E31C /* 20151107_pubmed_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 40435D541BEE096100B2E31C /* 20151107_pubmed_mock.json */; };
+		406BB6D91BFE2E2800AE39C5 /* ADMDetailAbstractTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BB6D81BFE2E2800AE39C5 /* ADMDetailAbstractTableViewCell.swift */; };
+		406BB6DB1BFE2FE800AE39C5 /* ADMDetailPMIDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BB6DA1BFE2FE800AE39C5 /* ADMDetailPMIDTableViewCell.swift */; };
+		406BB6DF1BFEF5CF00AE39C5 /* ADMDetailPMIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406BB6DE1BFEF5CF00AE39C5 /* ADMDetailPMIDViewController.swift */; };
 		40978CA31BEE993500104975 /* ADMDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978CA21BEE993500104975 /* ADMDetailViewController.swift */; };
 		B9BEB7E51BEE1200001DF1E5 /* ADMServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */; };
 		B9BEB7E71BEE1216001DF1E5 /* ADMQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */; };
@@ -24,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		403801491BFDB07C00CB7F26 /* ADMDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDetailTableViewCell.swift; sourceTree = "<group>"; };
 		40435D271BEA364D00B2E31C /* ADMInformationRetriever.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADMInformationRetriever.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40435D3E1BEA9F3700B2E31C /* ADMMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMMainViewController.swift; sourceTree = "<group>"; };
 		40435D411BEA9F4A00B2E31C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +39,9 @@
 		40435D4E1BEA9FA700B2E31C /* ADMInformationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMInformationManager.swift; sourceTree = "<group>"; };
 		40435D521BEA9FEC00B2E31C /* mockdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockdata.json; sourceTree = "<group>"; };
 		40435D541BEE096100B2E31C /* 20151107_pubmed_mock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = 20151107_pubmed_mock.json; path = ../../../../MockData/20151107_pubmed_mock.json; sourceTree = "<group>"; };
+		406BB6D81BFE2E2800AE39C5 /* ADMDetailAbstractTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDetailAbstractTableViewCell.swift; sourceTree = "<group>"; };
+		406BB6DA1BFE2FE800AE39C5 /* ADMDetailPMIDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDetailPMIDTableViewCell.swift; sourceTree = "<group>"; };
+		406BB6DE1BFEF5CF00AE39C5 /* ADMDetailPMIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDetailPMIDViewController.swift; sourceTree = "<group>"; };
 		40978CA21BEE993500104975 /* ADMDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDetailViewController.swift; sourceTree = "<group>"; };
 		B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMServer.swift; sourceTree = "<group>"; };
 		B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMQuery.swift; sourceTree = "<group>"; };
@@ -73,6 +81,7 @@
 			children = (
 				40435D3D1BEA9F3700B2E31C /* ADMMainViewController */,
 				40978C9F1BEE98DC00104975 /* ADMDetailViewController */,
+				406BB6DD1BFEF5B800AE39C5 /* ADMDetailPMIDViewController */,
 				40435D4D1BEA9F5200B2E31C /* ADMInformationManager */,
 				B9BEB7E31BEE11B9001DF1E5 /* ADMServer */,
 				B9BEB7E21BEE11B9001DF1E5 /* ADMQuery */,
@@ -96,9 +105,9 @@
 			children = (
 				40435D511BEA9FEC00B2E31C /* MockData */,
 				40435D411BEA9F4A00B2E31C /* AppDelegate.swift */,
+				40435D451BEA9F4A00B2E31C /* Main.storyboard */,
 				40435D421BEA9F4A00B2E31C /* Assets.xcassets */,
 				40435D431BEA9F4A00B2E31C /* LaunchScreen.storyboard */,
-				40435D451BEA9F4A00B2E31C /* Main.storyboard */,
 				40435D471BEA9F4A00B2E31C /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -122,10 +131,21 @@
 			path = MockData;
 			sourceTree = "<group>";
 		};
+		406BB6DD1BFEF5B800AE39C5 /* ADMDetailPMIDViewController */ = {
+			isa = PBXGroup;
+			children = (
+				406BB6DE1BFEF5CF00AE39C5 /* ADMDetailPMIDViewController.swift */,
+			);
+			path = ADMDetailPMIDViewController;
+			sourceTree = "<group>";
+		};
 		40978C9F1BEE98DC00104975 /* ADMDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				40978CA21BEE993500104975 /* ADMDetailViewController.swift */,
+				403801491BFDB07C00CB7F26 /* ADMDetailTableViewCell.swift */,
+				406BB6D81BFE2E2800AE39C5 /* ADMDetailAbstractTableViewCell.swift */,
+				406BB6DA1BFE2FE800AE39C5 /* ADMDetailPMIDTableViewCell.swift */,
 			);
 			path = ADMDetailViewController;
 			sourceTree = "<group>";
@@ -238,10 +258,14 @@
 			files = (
 				B9BEB7E71BEE1216001DF1E5 /* ADMQuery.swift in Sources */,
 				40435D481BEA9F4A00B2E31C /* AppDelegate.swift in Sources */,
+				406BB6DF1BFEF5CF00AE39C5 /* ADMDetailPMIDViewController.swift in Sources */,
 				40435D3F1BEA9F3700B2E31C /* ADMMainViewController.swift in Sources */,
 				B9BEB7E91BEE1224001DF1E5 /* ADMDocument.swift in Sources */,
 				40978CA31BEE993500104975 /* ADMDetailViewController.swift in Sources */,
+				4038014A1BFDB07C00CB7F26 /* ADMDetailTableViewCell.swift in Sources */,
+				406BB6DB1BFE2FE800AE39C5 /* ADMDetailPMIDTableViewCell.swift in Sources */,
 				40435D4F1BEA9FA700B2E31C /* ADMInformationManager.swift in Sources */,
+				406BB6D91BFE2E2800AE39C5 /* ADMDetailAbstractTableViewCell.swift in Sources */,
 				B9BEB7E51BEE1200001DF1E5 /* ADMServer.swift in Sources */,
 				B9BEB7EB1BEE1234001DF1E5 /* ADMAuthor.swift in Sources */,
 			);

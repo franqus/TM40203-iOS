@@ -89,7 +89,23 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	
 //	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
 //	{
-//		
+////		[self performSegueWithIdentifier:@"yourSegue" sender:self];
+//		self.performSegueWithIdentifier("detailSegue", sender: self)
 //	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if(segue.identifier == "detailSegue")
+		{
+			let vc = segue.destinationViewController as! ADMDetailViewController
+			let indexPath = self.tvResults.indexPathForCell(sender as! UITableViewCell)
+			let doc: ADMDocument! = self.manager.query.results[indexPath!.row]
+			if(doc != nil)
+			{
+				vc.doc = doc as ADMDocument
+			}
+		}
+	}
+	
+	
 	
 }
