@@ -14,6 +14,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	@IBOutlet weak var tfSearch: UITextField!
 	@IBOutlet weak var tvResults: UITableView!
 	@IBOutlet weak var scSource: UISegmentedControl!
+	@IBOutlet weak var btnGo: UIButton!
 	
 	var manager: ADMInformationManager!
     let documentsPerSection: Int = 10
@@ -28,6 +29,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		
 		self.manager.curServer = self.manager.servers[self.scSource.selectedSegmentIndex]
 
+		self.btnGo.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
 //		print(manager)
 	}
 	
@@ -45,10 +47,28 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		// Dispose of any resources that can be recreated.
 	}
 
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		
+		if(range.location == 0)
+		{
+			self.btnGo.enabled = false
+		}
+		else
+		{
+			self.btnGo.enabled = true
+		}
+		
+		return true
+	}
+	
 	func textFieldDidEndEditing(textField: UITextField)
 	{
 		print("\(__FUNCTION__)")
-		
+	}
+	
+	func textFieldShouldReturn(textField: UITextField) -> Bool
+	{
+		return true
 	}
 	
 	@IBAction func btnSearch_tapped(sender: AnyObject)
@@ -70,12 +90,16 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 //		let query: ADMQuery = ADMQuery.init(query: self.tfSearch.text!)
 //        self.manager.sendQuery(query, server: self.manager.curServer, index: 0, length: self.documentsPerSection)
 		
+		
 		self.manager.sendQuery(query, server: self.manager.curServer, index: 0, length: self.documentsPerSection) { (response, totalResults, error) -> Void in
 			self.results = response as! Array<ADMDocument>
 			self.totalResults = totalResults
 			
-			self.tvResults.reloadData()
-
+			dispatch_async(dispatch_get_main_queue())
+			{
+				self.tvResults.reloadData()
+			}
+				
 		}
 		
 //        self.tvResults.reloadData()

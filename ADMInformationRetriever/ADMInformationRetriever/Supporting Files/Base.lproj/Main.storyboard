@@ -18,6 +18,9 @@
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="bCu-Tj-wrp"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IR App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" id="tcp-hH-bVZ">
                                 <rect key="frame" x="8" y="0.0" width="120" height="54"/>
@@ -50,7 +53,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PUz-ff-FvR"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WEZ-lD-9WM">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WEZ-lD-9WM">
                                 <rect key="frame" x="277" y="94" width="33" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go">
@@ -84,6 +87,7 @@
                     <navigationItem key="navigationItem" id="ITx-6H-wFD"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnGo" destination="WEZ-lD-9WM" id="RuP-pP-5Sg"/>
                         <outlet property="scSource" destination="dUz-hl-Cfv" id="j1y-ea-ALu"/>
                         <outlet property="tfSearch" destination="fli-PJ-YU3" id="npY-Rs-0gm"/>
                         <outlet property="tvResults" destination="2g3-Hz-YHS" id="N06-xW-7dN"/>
