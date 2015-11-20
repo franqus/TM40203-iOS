@@ -98,7 +98,7 @@ class ADMQuery: NSObject{
 					if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
 					{
 						self.results = self.getDocumentsForResult(jsonResult.objectForKey("QueryResult")!.objectForKey("results") as! [NSDictionary])
-						self.totalResults = self.results.count
+						self.totalResults = jsonResult.objectForKey("QueryResult")!.objectForKey("totalResults") as! Int//self.results.count
 						self.resultsPerPage = 10
 						
 						completionHandler(results: self.results, totalResults: self.totalResults, error: nil)

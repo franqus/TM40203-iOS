@@ -30,6 +30,8 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		self.manager.curServer = self.manager.servers[self.scSource.selectedSegmentIndex]
 
 		self.btnGo.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
+		
+		self.tfSearch.becomeFirstResponder()
 //		print(manager)
 	}
 	
@@ -68,6 +70,8 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool
 	{
+		textField.resignFirstResponder()
+		self.btnSearch_tapped(self.btnGo)
 		return true
 	}
 	
@@ -129,16 +133,16 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		let cell:UITableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewCell")! as UITableViewCell
 		
         let docNum: Int = indexPath.section*self.documentsPerSection+indexPath.row
-        var lastDocNum: Int = self.results.count-1//self.manager.query.results.count-1
-        
+//        var lastDocNum: Int = self.results.count-1//self.manager.query.results.count-1
+		
         var document: ADMDocument
         
-        while(docNum>lastDocNum){
-            self.manager.sendQuery(self.manager.query, server: self.manager.servers.first!, index: lastDocNum+1, length: self.documentsPerSection)
-            lastDocNum = self.manager.query.results.count-1
-        }
-        
-        document = self.results[docNum]//self.manager.query.results[docNum]
+//        while(docNum>lastDocNum){
+//            self.manager.sendQuery(self.manager.query, server: self.manager.servers.first!, index: lastDocNum+1, length: self.documentsPerSection)
+//            lastDocNum = self.manager.query.results.count-1
+//        }
+		
+        document = self.results[docNum%self.results.count]//self.manager.query.results[docNum]
         
 		cell.textLabel?.text = document.title
         
