@@ -41,7 +41,7 @@ class ADMQuery: NSObject{
 				{
 					self.results = getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
 					self.totalResults = self.results.count
-					self.resultsPerPage = 1000
+					self.resultsPerPage = length
 				}
 			}
 			catch
@@ -77,7 +77,7 @@ class ADMQuery: NSObject{
 				{
 					self.results = self.getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
 					self.totalResults = self.results.count
-					self.resultsPerPage = 1000
+					self.resultsPerPage = length
 					
 					completionHandler(results: self.results, totalResults: self.totalResults, error: nil)
 
@@ -90,8 +90,10 @@ class ADMQuery: NSObject{
 		}
 		else
 		{
+			print("Sending request:"+(url?.absoluteString)!)
+			
 			let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-				print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+//				print(NSString(data: data!, encoding: NSUTF8StringEncoding))
 				
 				do
 				{

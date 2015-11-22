@@ -13,6 +13,10 @@ class ADMDetailViewController: UITableViewController {
 	weak var tvMain: UITextView!
 	var doc: ADMDocument!
 	
+	override func prefersStatusBarHidden() -> Bool {
+		return true
+	}
+	
     override func viewDidLoad()
 	{
         super.viewDidLoad()

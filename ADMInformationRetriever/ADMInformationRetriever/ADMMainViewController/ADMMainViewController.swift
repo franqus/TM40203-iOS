@@ -15,9 +15,10 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	@IBOutlet weak var tvResults: UITableView!
 	@IBOutlet weak var scSource: UISegmentedControl!
 	@IBOutlet weak var btnGo: UIButton!
+	@IBOutlet weak var aiRequest: UIActivityIndicatorView!
 	
 	var manager: ADMInformationManager!
-    let documentsPerSection: Int = 1000
+    let documentsPerSection: String = "1000"
 	var results: Array<ADMDocument> = [ADMDocument]()
 	var totalResults: Int = 0
 	
@@ -82,7 +83,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 			return
 		}
 		
-		let paramDict = ["length":"1000",
+		let paramDict = ["length":self.documentsPerSection,
 						"startIndex":"0",
 						"search":["journal":self.tfSearch.text!,
 							"authors":self.tfSearch.text!,
@@ -95,28 +96,26 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 //        self.manager.sendQuery(query, server: self.manager.curServer, index: 0, length: self.documentsPerSection)
 		
 		
-		self.manager.sendQuery(query, server: self.manager.curServer, index: 0, length: self.documentsPerSection) { (response, totalResults, error) -> Void in
+		self.aiRequest.startAnimating()
+		self.btnGo.hidden = true
+		self.manager.sendQuery(query, server: self.manager.curServer, index: 0, length: Int(self.documentsPerSection)!) { (response, totalResults, error) -> Void in
 			self.results = response as! Array<ADMDocument>
 			self.totalResults = totalResults
 			
 			dispatch_async(dispatch_get_main_queue())
 			{
+				self.aiRequest.stopAnimating()
+				self.btnGo.hidden = false
 				self.tvResults.reloadData()
 			}
 				
 		}
-		
-//        self.tvResults.reloadData()
 	}
 	
 	@IBAction func segmentedControl_changed(sender: UISegmentedControl)
 	{
 		self.manager.curServer = self.manager.servers[sender.selectedSegmentIndex]
 	}
-	
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return self.totalResults/self.documentsPerSection//self.manager.query.totalResults/documentsPerSection
-//    }
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
@@ -125,28 +124,27 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 //        return min(followingDocs, self.documentsPerSection)
 	}
 	
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return String(format: "%i", section*self.documentsPerSection)
-//    }
+		var headerStr: String = String(format: "   %i Results", self.totalResults)
+		if(self.totalResults == 1000)
+		{
+			headerStr = String(format: "   %i+ Results", self.totalResults)
+		}
+		return headerStr
+    }
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		let cell:UITableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewCell")! as UITableViewCell
-		
-//        let docNum: Int = indexPath.section*self.documentsPerSection+indexPath.row
-//        var lastDocNum: Int = self.results.count-1//self.manager.query.results.count-1
+		let cell:ADMMainViewResultTableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewMainResultCell")! as! ADMMainViewResultTableViewCell
 		
         var document: ADMDocument
-        
-//        while(docNum>lastDocNum){
-//            self.manager.sendQuery(self.manager.query, server: self.manager.servers.first!, index: lastDocNum+1, length: self.documentsPerSection)
-//            lastDocNum = self.manager.query.results.count-1
-//        }
+        document = self.results[indexPath.row]
 		
-        document = self.results[indexPath.row]//[docNum%self.results.count]//self.manager.query.results[docNum]
-        
-		cell.textLabel?.text = document.title
-        
+		cell.lblRank.text = String(format: "%.3f", document.rank)
+		cell.lblTitle.text = document.title
+//		cell.textLabel?.text = document.title
+	
 		return cell
 	}
 	
@@ -154,12 +152,6 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 20
 	}
-	
-//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-//	{
-////		[self performSegueWithIdentifier:@"yourSegue" sender:self];
-//		self.performSegueWithIdentifier("detailSegue", sender: self)
-//	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if(segue.identifier == "detailSegue")
@@ -173,7 +165,5 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 			}
 		}
 	}
-	
-	
 	
 }

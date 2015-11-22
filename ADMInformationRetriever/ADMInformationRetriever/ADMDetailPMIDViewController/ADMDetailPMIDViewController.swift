@@ -13,6 +13,10 @@ class ADMDetailPMIDViewController: UIViewController, UIWebViewDelegate {
 	var url: NSURL!
 	@IBOutlet weak var wvMain: UIWebView!
 	
+	override func prefersStatusBarHidden() -> Bool {
+		return true
+	}
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
