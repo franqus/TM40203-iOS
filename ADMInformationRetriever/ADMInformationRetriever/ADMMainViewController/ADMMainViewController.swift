@@ -17,7 +17,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	@IBOutlet weak var btnGo: UIButton!
 	
 	var manager: ADMInformationManager!
-    let documentsPerSection: Int = 10
+    let documentsPerSection: Int = 1000
 	var results: Array<ADMDocument> = [ADMDocument]()
 	var totalResults: Int = 0
 	
@@ -82,7 +82,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 			return
 		}
 		
-		let paramDict = ["length":"10",
+		let paramDict = ["length":"1000",
 						"startIndex":"0",
 						"search":["journal":self.tfSearch.text!,
 							"authors":self.tfSearch.text!,
@@ -114,25 +114,26 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		self.manager.curServer = self.manager.servers[sender.selectedSegmentIndex]
 	}
 	
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.totalResults/self.documentsPerSection//self.manager.query.totalResults/documentsPerSection
-    }
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return self.totalResults/self.documentsPerSection//self.manager.query.totalResults/documentsPerSection
+//    }
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-        let followingDocs: Int = self.totalResults-section*self.documentsPerSection//self.manager.query.totalResults-section*documentsPerSection
-        return min(followingDocs, self.documentsPerSection)
+		return self.totalResults
+//        let followingDocs: Int = self.totalResults-section*self.documentsPerSection//self.manager.query.totalResults-section*documentsPerSection
+//        return min(followingDocs, self.documentsPerSection)
 	}
 	
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(format: "%i", section*self.documentsPerSection)
-    }
-    
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return String(format: "%i", section*self.documentsPerSection)
+//    }
+	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
 		let cell:UITableViewCell = self.tvResults.dequeueReusableCellWithIdentifier("UITableViewCell")! as UITableViewCell
 		
-        let docNum: Int = indexPath.section*self.documentsPerSection+indexPath.row
+//        let docNum: Int = indexPath.section*self.documentsPerSection+indexPath.row
 //        var lastDocNum: Int = self.results.count-1//self.manager.query.results.count-1
 		
         var document: ADMDocument
@@ -142,7 +143,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 //            lastDocNum = self.manager.query.results.count-1
 //        }
 		
-        document = self.results[docNum%self.results.count]//self.manager.query.results[docNum]
+        document = self.results[indexPath.row]//[docNum%self.results.count]//self.manager.query.results[docNum]
         
 		cell.textLabel?.text = document.title
         

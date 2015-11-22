@@ -41,7 +41,7 @@ class ADMQuery: NSObject{
 				{
 					self.results = getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
 					self.totalResults = self.results.count
-					self.resultsPerPage = 10
+					self.resultsPerPage = 1000
 				}
 			}
 			catch
@@ -77,7 +77,7 @@ class ADMQuery: NSObject{
 				{
 					self.results = self.getDocumentsForResult(jsonResult.objectForKey("results") as! [NSDictionary])
 					self.totalResults = self.results.count
-					self.resultsPerPage = 10
+					self.resultsPerPage = 1000
 					
 					completionHandler(results: self.results, totalResults: self.totalResults, error: nil)
 
