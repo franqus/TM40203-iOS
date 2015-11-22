@@ -55,7 +55,7 @@ class ADMQuery: NSObject{
         return true
     }
 	
-	typealias QueryResponseBlock = (results:AnyObject?, totalResults: Int, error:NSError?) -> Void
+	typealias QueryResponseBlock = (results:AnyObject?, totalResults: Int, error:ErrorType?) -> Void
 
 	func send(index: Int, length: Int, urlString: String, completionHandler: QueryResponseBlock) -> Void
 	{
@@ -85,6 +85,7 @@ class ADMQuery: NSObject{
 			}
 			catch
 			{
+				completionHandler(results: nil, totalResults: 0, error: error)
 				print(error)
 			}
 		}
@@ -95,21 +96,29 @@ class ADMQuery: NSObject{
 			let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
 //				print(NSString(data: data!, encoding: NSUTF8StringEncoding))
 				
-				do
+				if(error == nil)
 				{
-					if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
+					do
 					{
-						self.results = self.getDocumentsForResult(jsonResult.objectForKey("QueryResult")!.objectForKey("results") as! [NSDictionary])
-						self.totalResults = jsonResult.objectForKey("QueryResult")!.objectForKey("totalResults") as! Int//self.results.count
-						self.resultsPerPage = 10
-						
-						completionHandler(results: self.results, totalResults: self.totalResults, error: nil)
-						
+						if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary
+						{
+							self.results = self.getDocumentsForResult(jsonResult.objectForKey("QueryResult")!.objectForKey("results") as! [NSDictionary])
+							self.totalResults = jsonResult.objectForKey("QueryResult")!.objectForKey("totalResults") as! Int//self.results.count
+							self.resultsPerPage = 10
+							
+							completionHandler(results: self.results, totalResults: self.totalResults, error: nil)
+							
+						}
+					}
+					catch
+					{
+						print(error)
+						completionHandler(results: nil, totalResults: 0, error: error)
 					}
 				}
-				catch
+				else
 				{
-					print(error)
+					completionHandler(results: nil, totalResults: 0, error: error)
 				}
 //				completionHandler(response: response, totalResults: self.totalResults, error: error)
 			}
@@ -143,33 +152,24 @@ class ADMQuery: NSObject{
 	func buildQuery(params: NSDictionary) -> String
 	{
 		var fullQuery: String = "query?"
-//		for key : AnyObject in params.allKeys
 		for (index, element) in params.allKeys.enumerate()
 		{
 			let stringKey = element as! String
-//			if let keyValue = ocDictionary.valueForKey(stringKey){
-//				swiftDict[stringKey] = keyValue
-//			}
-			
-			
 			
 			if(stringKey == "search")
 			{
 				var subQueryStr: String = "search="
-				for (subIndex, element) in (params["search"]?.allKeys.enumerate())!
+				for (_, element) in (params["search"]?.allKeys.enumerate())!
 				{
 					let stringSubKey = element as! String
-
-					if let subKeyValue = params["search"]!.valueForKey(stringSubKey)
+					let subKeyValue = params["search"]!.valueForKey(stringSubKey) as! String
+					if(subKeyValue != "")
 					{
-						subQueryStr.appendContentsOf( String(format: "%@:%@*", stringSubKey, subKeyValue as! String) )
-					}
-//					var curStr: String = key+":"+params["query"][key]
-//					queryStr.appendContentsOf()
-					
-					if(subIndex < (params["search"]?.allKeys.count)!-1)
-					{
-						subQueryStr.appendContentsOf(" OR ")
+						if(subQueryStr.characters.count > 7)
+						{
+							subQueryStr.appendContentsOf(" OR ")
+						}
+						subQueryStr.appendContentsOf( String(format: "%@:%@*", stringSubKey, subKeyValue) )
 					}
 					
 				}

@@ -42,7 +42,7 @@ class ADMInformationManager: NSObject
         return query.send(index, length: length, urlString: server.url)
     }
 	
-	typealias ManagerResponseBlock = (response:AnyObject?, totalResults: Int, error:NSError?) -> Void
+	typealias ManagerResponseBlock = (response:AnyObject?, totalResults: Int, error:ErrorType?) -> Void
 	func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int, completionHandler: ManagerResponseBlock) -> Void
 	{
 		query.send(index, length: length, urlString: server.url, completionHandler: completionHandler)
