@@ -186,6 +186,7 @@
                         <outlet property="tfJournal" destination="oUE-gt-QcC" id="vjB-Sw-Ykv"/>
                         <outlet property="tfSearch" destination="fli-PJ-YU3" id="npY-Rs-0gm"/>
                         <outlet property="tvResults" destination="2g3-Hz-YHS" id="N06-xW-7dN"/>
+                        <outlet property="viewTopContainer" destination="Vn2-SN-VrC" id="JSP-Oy-dFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

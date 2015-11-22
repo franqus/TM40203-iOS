@@ -17,6 +17,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	
 	@IBOutlet weak var tfSearch: UITextField!
 	@IBOutlet weak var tvResults: UITableView!
+	@IBOutlet weak var viewTopContainer: UIView!
 	@IBOutlet weak var scSource: UISegmentedControl!
 	@IBOutlet weak var btnGo: UIButton!
 	@IBOutlet weak var aiRequest: UIActivityIndicatorView!
@@ -69,11 +70,6 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		}
 		
 		return true
-	}
-	
-	func textFieldDidEndEditing(textField: UITextField)
-	{
-		print("\(__FUNCTION__)")
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool
@@ -200,22 +196,22 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		{
 			self.searchMode = ADMSearchMode.ADMSearchModeAdvanced
 			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
+				var containerFrame = self.viewTopContainer.frame
+				containerFrame.size.height += 140
+				self.viewTopContainer.frame = containerFrame
+				
 				var tableFrame = self.tvResults.frame
 				tableFrame.origin.y += 140
 				tableFrame.size.height -= 140
-				
 				self.tvResults.frame = tableFrame
-				self.tfSearch.placeholder = "Title"
 				
+				self.tfSearch.placeholder = "Title"
 				self.tfAuthor.frame.origin.y = self.tfSearch.frame.origin.y+self.tfSearch.frame.size.height+5
 				self.tfAuthor.hidden = false
-				
 				self.tfJournal.frame.origin.y = self.tfAuthor.frame.origin.y+self.tfAuthor.frame.size.height+5
 				self.tfJournal.hidden = false
-				
 				self.tfInstitution.frame.origin.y = self.tfJournal.frame.origin.y+self.tfJournal.frame.size.height+5
 				self.tfInstitution.hidden = false
-				
 				self.tfAbstract.frame.origin.y = self.tfInstitution.frame.origin.y+self.tfInstitution.frame.size.height+5
 				self.tfAbstract.hidden = false
 				
@@ -227,11 +223,15 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		{
 			self.searchMode = ADMSearchMode.ADMSearchModeSimple
 			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
+				var containerFrame = self.viewTopContainer.frame
+				containerFrame.size.height -= 140
+				self.viewTopContainer.frame = containerFrame
+				
 				var tableFrame = self.tvResults.frame
 				tableFrame.origin.y -= 140
 				tableFrame.size.height += 140
-				
 				self.tvResults.frame = tableFrame
+				
 				self.tfSearch.placeholder = ""
 				self.tfAuthor.frame.origin.y = self.tfSearch.frame.origin.y
 				self.tfJournal.frame.origin.y = self.tfSearch.frame.origin.y
