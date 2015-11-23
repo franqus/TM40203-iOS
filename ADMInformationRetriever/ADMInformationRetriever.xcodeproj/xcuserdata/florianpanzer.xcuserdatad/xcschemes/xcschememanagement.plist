@@ -4,15 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ADMInformationRetriever WatchKit 1 App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>ADMInformationRetriever.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Notification - ADMInformationRetriever WatchKit 1 App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>40435D261BEA364D00B2E31C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B99EC68B1C03958E00A070E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
