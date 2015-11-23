@@ -29,6 +29,14 @@
 		B99EC6931C03958E00A070E8 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B99EC6911C03958E00A070E8 /* Interface.storyboard */; };
 		B99EC6951C03958E00A070E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B99EC6941C03958E00A070E8 /* Assets.xcassets */; };
 		B99EC6991C03958E00A070E8 /* ADMInformationRetriever WatchKit 1 Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B99EC67F1C03958D00A070E8 /* ADMInformationRetriever WatchKit 1 Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B99EC6A21C039D2800A070E8 /* ADMWatchTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99EC6A11C039D2800A070E8 /* ADMWatchTableRow.swift */; settings = {ASSET_TAGS = (); }; };
+		B99EC6A31C03A43C00A070E8 /* ADMDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */; settings = {ASSET_TAGS = (); }; };
+		B99EC6A41C03A59100A070E8 /* ADMAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7EA1BEE1234001DF1E5 /* ADMAuthor.swift */; settings = {ASSET_TAGS = (); }; };
+		B99EC6A51C03A71A00A070E8 /* ADMInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40435D4E1BEA9FA700B2E31C /* ADMInformationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		B99EC6A61C03A77E00A070E8 /* ADMServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */; settings = {ASSET_TAGS = (); }; };
+		B99EC6A71C03A78E00A070E8 /* ADMQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */; settings = {ASSET_TAGS = (); }; };
+		B99EC6A81C03A7C100A070E8 /* 20151107_pubmed_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 40435D541BEE096100B2E31C /* 20151107_pubmed_mock.json */; settings = {ASSET_TAGS = (); }; };
+		B99EC6A91C03A98000A070E8 /* mockdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 40435D521BEA9FEC00B2E31C /* mockdata.json */; settings = {ASSET_TAGS = (); }; };
 		B9BEB7E51BEE1200001DF1E5 /* ADMServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */; };
 		B9BEB7E71BEE1216001DF1E5 /* ADMQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */; };
 		B9BEB7E91BEE1224001DF1E5 /* ADMDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */; };
@@ -93,6 +101,7 @@
 		B99EC6921C03958E00A070E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		B99EC6941C03958E00A070E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B99EC6961C03958E00A070E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B99EC6A11C039D2800A070E8 /* ADMWatchTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMWatchTableRow.swift; sourceTree = "<group>"; };
 		B9BEB7E41BEE1200001DF1E5 /* ADMServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMServer.swift; sourceTree = "<group>"; };
 		B9BEB7E61BEE1216001DF1E5 /* ADMQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMQuery.swift; sourceTree = "<group>"; };
 		B9BEB7E81BEE1224001DF1E5 /* ADMDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADMDocument.swift; sourceTree = "<group>"; };
@@ -224,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				B99EC6831C03958D00A070E8 /* InterfaceController.swift */,
+				B99EC6A11C039D2800A070E8 /* ADMWatchTableRow.swift */,
 				B99EC6851C03958D00A070E8 /* NotificationController.swift */,
 				B99EC6871C03958D00A070E8 /* Assets.xcassets */,
 				B99EC6891C03958D00A070E8 /* Info.plist */,
@@ -399,7 +409,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B99EC68D1C03958E00A070E8 /* ADMInformationRetriever WatchKit 1 App.app in Resources */,
+				B99EC6A91C03A98000A070E8 /* mockdata.json in Resources */,
 				B99EC6881C03958D00A070E8 /* Assets.xcassets in Resources */,
+				B99EC6A81C03A7C100A070E8 /* 20151107_pubmed_mock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +452,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B99EC6861C03958D00A070E8 /* NotificationController.swift in Sources */,
+				B99EC6A71C03A78E00A070E8 /* ADMQuery.swift in Sources */,
+				B99EC6A61C03A77E00A070E8 /* ADMServer.swift in Sources */,
+				B99EC6A31C03A43C00A070E8 /* ADMDocument.swift in Sources */,
 				B99EC6841C03958D00A070E8 /* InterfaceController.swift in Sources */,
+				B99EC6A41C03A59100A070E8 /* ADMAuthor.swift in Sources */,
+				B99EC6A21C039D2800A070E8 /* ADMWatchTableRow.swift in Sources */,
+				B99EC6A51C03A71A00A070E8 /* ADMInformationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

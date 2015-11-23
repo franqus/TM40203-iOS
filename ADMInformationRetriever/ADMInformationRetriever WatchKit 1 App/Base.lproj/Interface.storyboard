@@ -8,7 +8,28 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ADMInformationRetriever_WatchKit_1_App" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="ADMInformationRetriever_WatchKit_1_Extension">
+                    <items>
+                        <table alignment="left" id="C6i-ss-Nrs">
+                            <items>
+                                <tableRow identifier="ADMWatchTableRow" id="3Sq-Wv-rbT" customClass="ADMWatchTableRow" customModule="ADMInformationRetriever_WatchKit_1_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="Ohz-Cm-Rxq">
+                                        <items>
+                                            <label width="121" height="45" alignment="left" text="Label" numberOfLines="2" id="qN0-zm-ppx"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="group" destination="Ohz-Cm-Rxq" id="rlu-PY-yaP"/>
+                                        <outlet property="label" destination="qN0-zm-ppx" id="OAg-mq-fei"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="C6i-ss-Nrs" id="Cis-Zi-gCT"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
