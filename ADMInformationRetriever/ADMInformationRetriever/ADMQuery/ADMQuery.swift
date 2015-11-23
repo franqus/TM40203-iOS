@@ -65,7 +65,7 @@ class ADMQuery: NSObject{
 
 		let url = NSURL(string: urlStr as String)
 		
-		if(NSURL(string: urlString)!.lastPathComponent == "20151107_pubmed_mock.json")
+		if(NSURL(string: urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)!.lastPathComponent == "20151107_pubmed_mock.json")
 		{
 //			let bundle = NSBundle.mainBundle()
 //			let path = bundle.pathForResource("20151107_pubmed_mock", ofType: "json")
