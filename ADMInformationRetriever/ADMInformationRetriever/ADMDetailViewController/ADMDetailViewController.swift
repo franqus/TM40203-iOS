@@ -10,7 +10,7 @@ import UIKit
 
 class ADMDetailViewController: UITableViewController {
 
-	weak var tvMain: UITextView!
+//	weak var tvMain: UITextView!
 	var doc: ADMDocument!
 	
 	override func prefersStatusBarHidden() -> Bool {
@@ -23,10 +23,10 @@ class ADMDetailViewController: UITableViewController {
         // Do any additional setup after loading the view.
 		self.navigationController?.setNavigationBarHidden(false, animated: true)
 		
-		if (self.tvMain != nil)
-		{
-			self.tvMain.text = self.doc.abstract
-		}
+//		if (self.tvMain != nil)
+//		{
+//			self.tvMain.text = self.doc.abstract
+//		}
 	}
 
     override func didReceiveMemoryWarning()
@@ -68,7 +68,7 @@ class ADMDetailViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		var cell:ADMDetailTableViewCell
+		var cell:UITableViewCell
 		if(indexPath.row == 5)
 		{
 			cell = tableView.dequeueReusableCellWithIdentifier("UITableViewDetailAbstractCell")! as! ADMDetailAbstractTableViewCell
@@ -76,6 +76,8 @@ class ADMDetailViewController: UITableViewController {
 		else if(indexPath.row == 4)
 		{
 			cell = tableView.dequeueReusableCellWithIdentifier("UITableViewDetailPMIDCell")! as! ADMDetailPMIDTableViewCell
+//			cell = tableView.dequeueReusableCellWithIdentifier("UITableViewDetailCell")! as! ADMDetailTableViewCell
+
 		}
 		else
 		{
@@ -84,33 +86,39 @@ class ADMDetailViewController: UITableViewController {
 		
 		if(indexPath.row == 0)
 		{
-			cell.lblTitle!.text = "Title"
-			cell.tvContent!.text = doc.title
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Title"
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.title
 		}
 		else if(indexPath.row == 1)
 		{
-			cell.lblTitle!.text = "Journal"
-			cell.tvContent!.text = doc.journal
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Journal"
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.journal
 		}
 		else if(indexPath.row == 2)
 		{
-//			cell.textLabel!.text = doc.authors
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Authors"
+//			let s = ",".join(doc.authors.map{String($0)})
+
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.authors.joinWithSeparator(",")//doc.authors.description
 		}
 		else if(indexPath.row == 3)
 		{
-			cell.lblTitle!.text = "Institutions"
-			cell.tvContent!.text = doc.institutions
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Institutions"
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.institutions
 		}
 		else if(indexPath.row == 4)
 		{
-			cell.lblTitle!.text = "PMID"
-			cell.tvContent!.text = self.getURLForPMID(doc.pmid).absoluteString
+			(cell as! ADMDetailPMIDTableViewCell).lblTitle!.text = "PMID"
+			(cell as! ADMDetailPMIDTableViewCell).tvContent!.text = self.getURLForPMID(doc.pmid).absoluteString
 		}
 		else if(indexPath.row == 5)
 		{
-			cell.lblTitle!.text = "Abstract"
-			cell.tvContent!.text = doc.abstract
+			(cell as! ADMDetailAbstractTableViewCell).lblTitle!.text = "Abstract"
+			(cell as! ADMDetailAbstractTableViewCell).tvContent!.text = doc.abstract
 		}
+		
+//		cell.lblTitle.backgroundColor = UIColor.orangeColor()
+//		cell.tvContent.backgroundColor = UIColor.greenColor()
 	
 //		cell.textLabel?.text = document.title
 	

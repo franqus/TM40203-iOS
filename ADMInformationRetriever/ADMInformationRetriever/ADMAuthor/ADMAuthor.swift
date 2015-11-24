@@ -14,4 +14,8 @@ class ADMAuthor: NSObject {
     init(name: String) {
         self.name = name
     }
+	
+	override var description:String {
+		return self.name
+	}
 }

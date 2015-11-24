@@ -135,14 +135,15 @@ class ADMQuery: NSObject{
 		
 		for dict in results
 		{
-			var arrayAuthors = [ADMAuthor]()
+			var arrayAuthors = [String]()
 			for authorName in dict["authors"] as! Array<String>
 			{
-				let author = ADMAuthor(name: authorName)
-				arrayAuthors.append(author)
+//				let author = ADMAuthor(name: authorName)
+//				arrayAuthors.append(author)
+				arrayAuthors.append(authorName)
 			}
 			
-			let doc = ADMDocument(id: dict["id"]! as! String, journal: dict["journal"] as! String, title: dict["title"] as! String, authors: dict["authors"] as! Array<ADMAuthor>, institutions: dict["institutions"] as! String, abstract: dict["abstract"] as! String, pmid: dict["pmid"] as! String, url: "http://hcbi.nlm.nih.gov/pubmed/?term=", rank: (dict["ranking"] as! Float))
+			let doc = ADMDocument(id: dict["id"]! as! String, journal: dict["journal"] as! String, title: dict["title"] as! String, authors: dict["authors"] as! Array<String>, institutions: dict["institutions"] as! String, abstract: dict["abstract"] as! String, pmid: dict["pmid"] as! String, url: "http://hcbi.nlm.nih.gov/pubmed/?term=", rank: (dict["ranking"] as! Float))
 			arrayDocuments.append(doc)
 		}
 		

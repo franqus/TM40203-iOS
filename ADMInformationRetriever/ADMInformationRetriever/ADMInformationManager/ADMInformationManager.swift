@@ -28,7 +28,6 @@ class ADMInformationManager: NSObject
 
 		let javaServer = ADMServer(name: "offline", url: path!)
 		let mockServer = ADMServer(name: "offline", url: path!)
-
 		
 		self.servers = [cSharpServer, javaServer, mockServer]
 		

@@ -12,14 +12,14 @@ class ADMDocument: NSObject {
     var id: String
     var journal: String
     var title: String
-    var authors: Array<ADMAuthor> = [ADMAuthor]()
+    var authors: Array<String> = [String]()
     var institutions: String
     var abstract: String
     var pmid: String
     var url: String
     var rank: Float
     
-	init(id: String, journal: String, title: String, authors: Array<ADMAuthor>, institutions: String, abstract: String, pmid: String, url: String, rank: Float){
+	init(id: String, journal: String, title: String, authors: Array<String>, institutions: String, abstract: String, pmid: String, url: String, rank: Float){
         self.id = id
         self.journal = journal
         self.title = title
