@@ -23,10 +23,20 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	@IBOutlet weak var aiRequest: UIActivityIndicatorView!
 	
 	@IBOutlet weak var tfAuthor: UITextField!
+	@IBOutlet weak var constrAuthor: NSLayoutConstraint!
+	
 	@IBOutlet weak var tfJournal: UITextField!
+	@IBOutlet weak var constrJournal: NSLayoutConstraint!
+	
 	@IBOutlet weak var tfInstitution: UITextField!
+	@IBOutlet weak var constrInstitutions: NSLayoutConstraint!
+	
 	@IBOutlet weak var tfAbstract: UITextField!
+	@IBOutlet weak var constrAbstract: NSLayoutConstraint!
+	
 	@IBOutlet weak var switchAdvanced: UISwitch!
+	
+	@IBOutlet weak var containerHeight: NSLayoutConstraint!
 	
 	var searchMode: ADMSearchMode = ADMSearchMode.ADMSearchModeSimple
 	var manager: ADMInformationManager!
@@ -192,51 +202,60 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 	
 	@IBAction func toggleSearchMode(sender: UISwitch)
 	{
+
 		if(sender.on)
 		{
 			self.searchMode = ADMSearchMode.ADMSearchModeAdvanced
+			self.containerHeight.constant += 140
+			self.constrAuthor.constant += 35
+			self.constrJournal.constant += 70
+			self.constrInstitutions.constant += 105
+			self.constrAbstract.constant += 140
 			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
-				var containerFrame = self.viewTopContainer.frame
-				containerFrame.size.height += 140
-				self.viewTopContainer.frame = containerFrame
 				
-				var tableFrame = self.tvResults.frame
-				tableFrame.origin.y += 140
-				tableFrame.size.height -= 140
-				self.tvResults.frame = tableFrame
+//				var containerFrame = self.viewTopContainer.frame
+//				containerFrame.size.height += 140
+//				self.viewTopContainer.frame = containerFrame
+				
+				
+//				var tableFrame = self.tvResults.frame
+//				tableFrame.origin.y += 140
+//				tableFrame.size.height -= 140
+//				self.tvResults.frame = tableFrame
 				
 				self.tfSearch.placeholder = "Title"
-				self.tfAuthor.frame.origin.y = self.tfSearch.frame.origin.y+self.tfSearch.frame.size.height+5
 				self.tfAuthor.hidden = false
-				self.tfJournal.frame.origin.y = self.tfAuthor.frame.origin.y+self.tfAuthor.frame.size.height+5
 				self.tfJournal.hidden = false
-				self.tfInstitution.frame.origin.y = self.tfJournal.frame.origin.y+self.tfJournal.frame.size.height+5
 				self.tfInstitution.hidden = false
-				self.tfAbstract.frame.origin.y = self.tfInstitution.frame.origin.y+self.tfInstitution.frame.size.height+5
 				self.tfAbstract.hidden = false
 				
+				self.viewTopContainer.layoutIfNeeded()
 				}, completion: { finished in
-
 			})
 		}
 		else
 		{
 			self.searchMode = ADMSearchMode.ADMSearchModeSimple
+			self.containerHeight.constant -= 140
+			self.constrAuthor.constant -= 35
+			self.constrJournal.constant -= 70
+			self.constrInstitutions.constant -= 105
+			self.constrAbstract.constant -= 140
+			
 			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
-				var containerFrame = self.viewTopContainer.frame
-				containerFrame.size.height -= 140
-				self.viewTopContainer.frame = containerFrame
 				
-				var tableFrame = self.tvResults.frame
-				tableFrame.origin.y -= 140
-				tableFrame.size.height += 140
-				self.tvResults.frame = tableFrame
+//				var containerFrame = self.viewTopContainer.frame
+//				containerFrame.size.height -= 140
+//				self.viewTopContainer.frame = containerFrame
+
+
+//				var tableFrame = self.tvResults.frame
+//				tableFrame.origin.y -= 140
+//				tableFrame.size.height += 140
+//				self.tvResults.frame = tableFrame
 				
 				self.tfSearch.placeholder = ""
-				self.tfAuthor.frame.origin.y = self.tfSearch.frame.origin.y
-				self.tfJournal.frame.origin.y = self.tfSearch.frame.origin.y
-				self.tfInstitution.frame.origin.y = self.tfSearch.frame.origin.y
-				self.tfAbstract.frame.origin.y = self.tfSearch.frame.origin.y
+				self.viewTopContainer.layoutIfNeeded()
 				
 				}, completion: { finished in
 					self.tfAuthor.hidden = true
