@@ -176,12 +176,11 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
         var document: ADMDocument
         document = self.results[indexPath.row]
 		
-		cell.lblRank.text = String(format: "%.3f", document.rank)
+		cell.lblRank.text = String(format: "%.3f", document.rank!)
 		cell.lblTitle.text = document.title
 	
 		return cell
 	}
-	
 	
 	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 20
@@ -192,7 +191,7 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 		{
 			let vc = segue.destinationViewController as! ADMDetailViewController
 			let indexPath = self.tvResults.indexPathForCell(sender as! UITableViewCell)
-			let doc: ADMDocument! = self.results[indexPath!.row]//self.manager.query.results[indexPath!.row]
+			let doc: ADMDocument! = self.results[indexPath!.row]
 			if(doc != nil)
 			{
 				vc.doc = doc as ADMDocument
@@ -212,16 +211,6 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 			self.constrInstitutions.constant += 105
 			self.constrAbstract.constant += 140
 			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
-				
-//				var containerFrame = self.viewTopContainer.frame
-//				containerFrame.size.height += 140
-//				self.viewTopContainer.frame = containerFrame
-				
-				
-//				var tableFrame = self.tvResults.frame
-//				tableFrame.origin.y += 140
-//				tableFrame.size.height -= 140
-//				self.tvResults.frame = tableFrame
 				
 				self.tfSearch.placeholder = "Title"
 				self.tfAuthor.hidden = false
@@ -243,16 +232,6 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 			self.constrAbstract.constant -= 140
 			
 			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .CurveEaseInOut, animations: { () -> Void in
-				
-//				var containerFrame = self.viewTopContainer.frame
-//				containerFrame.size.height -= 140
-//				self.viewTopContainer.frame = containerFrame
-
-
-//				var tableFrame = self.tvResults.frame
-//				tableFrame.origin.y -= 140
-//				tableFrame.size.height += 140
-//				self.tvResults.frame = tableFrame
 				
 				self.tfSearch.placeholder = ""
 				self.viewTopContainer.layoutIfNeeded()

@@ -12,9 +12,4 @@ class ADMDetailTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var lblTitle: UILabel!
 	@IBOutlet weak var tvContent: UITextView!
-	
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 }

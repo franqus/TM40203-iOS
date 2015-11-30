@@ -10,7 +10,6 @@ import UIKit
 
 class ADMDetailViewController: UITableViewController {
 
-//	weak var tvMain: UITextView!
 	var doc: ADMDocument!
 	
 	override func prefersStatusBarHidden() -> Bool {
@@ -22,29 +21,7 @@ class ADMDetailViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 		self.navigationController?.setNavigationBarHidden(false, animated: true)
-		
-//		if (self.tvMain != nil)
-//		{
-//			self.tvMain.text = self.doc.abstract
-//		}
 	}
-
-    override func didReceiveMemoryWarning()
-	{
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-	
-	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
@@ -76,8 +53,6 @@ class ADMDetailViewController: UITableViewController {
 		else if(indexPath.row == 4)
 		{
 			cell = tableView.dequeueReusableCellWithIdentifier("UITableViewDetailPMIDCell")! as! ADMDetailPMIDTableViewCell
-//			cell = tableView.dequeueReusableCellWithIdentifier("UITableViewDetailCell")! as! ADMDetailTableViewCell
-
 		}
 		else
 		{
@@ -97,8 +72,6 @@ class ADMDetailViewController: UITableViewController {
 		else if(indexPath.row == 2)
 		{
 			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Authors"
-//			let s = ",".join(doc.authors.map{String($0)})
-
 			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.authors.joinWithSeparator(",")//doc.authors.description
 		}
 		else if(indexPath.row == 3)
@@ -109,18 +82,13 @@ class ADMDetailViewController: UITableViewController {
 		else if(indexPath.row == 4)
 		{
 			(cell as! ADMDetailPMIDTableViewCell).lblTitle!.text = "PMID"
-			(cell as! ADMDetailPMIDTableViewCell).tvContent!.text = self.getURLForPMID(doc.pmid).absoluteString
+			(cell as! ADMDetailPMIDTableViewCell).tvContent!.text = self.getURLForPMID(doc.pmid!).absoluteString
 		}
 		else if(indexPath.row == 5)
 		{
 			(cell as! ADMDetailAbstractTableViewCell).lblTitle!.text = "Abstract"
 			(cell as! ADMDetailAbstractTableViewCell).tvContent!.text = doc.abstract
 		}
-		
-//		cell.lblTitle.backgroundColor = UIColor.orangeColor()
-//		cell.tvContent.backgroundColor = UIColor.greenColor()
-	
-//		cell.textLabel?.text = document.title
 	
 		return cell
 	}
@@ -131,9 +99,7 @@ class ADMDetailViewController: UITableViewController {
 			let vc = segue.destinationViewController as! ADMDetailPMIDViewController
 			if(doc != nil)
 			{
-//				let request: NSURLRequest = NSURLRequest(URL: self.getURLForPMID(doc.pmid))
-//				vc.wvMain.loadRequest(request)
-				vc.url = self.getURLForPMID(doc.pmid)
+				vc.url = self.getURLForPMID(doc.pmid!)
 				vc.title = doc.title
 			}
 		}
@@ -141,10 +107,7 @@ class ADMDetailViewController: UITableViewController {
 	
 	func getURLForPMID(pmid: String) -> NSURL
 	{
-		let url = NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
+		let url = NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid!)
 		return url!
-//		return NSURL(fileURLWithPath: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
-//		return NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
-		
 	}
 }
