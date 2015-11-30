@@ -17,7 +17,7 @@ class ADMWatchTableRow: NSObject {
     
     func assignDocument(document : ADMDocument){
         self.document = document
-        label.setAttributedText(NSAttributedString(string: self.document.title))
+        label.setAttributedText(NSAttributedString(string: self.document.title!))
     }
 
 }

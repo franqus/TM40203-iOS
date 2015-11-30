@@ -10,7 +10,6 @@ import UIKit
 
 class ADMDetailViewController: UITableViewController {
 
-	weak var tvMain: UITextView!
 	var doc: ADMDocument!
 	
 	override func prefersStatusBarHidden() -> Bool {
@@ -22,29 +21,7 @@ class ADMDetailViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 		self.navigationController?.setNavigationBarHidden(false, animated: true)
-		
-		if (self.tvMain != nil)
-		{
-			self.tvMain.text = self.doc.abstract
-		}
 	}
-
-    override func didReceiveMemoryWarning()
-	{
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-	
-	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
@@ -68,7 +45,7 @@ class ADMDetailViewController: UITableViewController {
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		var cell:ADMDetailTableViewCell
+		var cell:UITableViewCell
 		if(indexPath.row == 5)
 		{
 			cell = tableView.dequeueReusableCellWithIdentifier("UITableViewDetailAbstractCell")! as! ADMDetailAbstractTableViewCell
@@ -84,35 +61,34 @@ class ADMDetailViewController: UITableViewController {
 		
 		if(indexPath.row == 0)
 		{
-			cell.lblTitle!.text = "Title"
-			cell.tvContent!.text = doc.title
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Title"
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.title
 		}
 		else if(indexPath.row == 1)
 		{
-			cell.lblTitle!.text = "Journal"
-			cell.tvContent!.text = doc.journal
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Journal"
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.journal
 		}
 		else if(indexPath.row == 2)
 		{
-//			cell.textLabel!.text = doc.authors
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Authors"
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.authors.joinWithSeparator(",")//doc.authors.description
 		}
 		else if(indexPath.row == 3)
 		{
-			cell.lblTitle!.text = "Institutions"
-			cell.tvContent!.text = doc.institutions
+			(cell as! ADMDetailTableViewCell).lblTitle!.text = "Institutions"
+			(cell as! ADMDetailTableViewCell).tvContent!.text = doc.institutions
 		}
 		else if(indexPath.row == 4)
 		{
-			cell.lblTitle!.text = "PMID"
-			cell.tvContent!.text = self.getURLForPMID(doc.pmid).absoluteString
+			(cell as! ADMDetailPMIDTableViewCell).lblTitle!.text = "PMID"
+			(cell as! ADMDetailPMIDTableViewCell).tvContent!.text = self.getURLForPMID(doc.pmid!).absoluteString
 		}
 		else if(indexPath.row == 5)
 		{
-			cell.lblTitle!.text = "Abstract"
-			cell.tvContent!.text = doc.abstract
+			(cell as! ADMDetailAbstractTableViewCell).lblTitle!.text = "Abstract"
+			(cell as! ADMDetailAbstractTableViewCell).tvContent!.text = doc.abstract
 		}
-	
-//		cell.textLabel?.text = document.title
 	
 		return cell
 	}
@@ -123,9 +99,7 @@ class ADMDetailViewController: UITableViewController {
 			let vc = segue.destinationViewController as! ADMDetailPMIDViewController
 			if(doc != nil)
 			{
-//				let request: NSURLRequest = NSURLRequest(URL: self.getURLForPMID(doc.pmid))
-//				vc.wvMain.loadRequest(request)
-				vc.url = self.getURLForPMID(doc.pmid)
+				vc.url = self.getURLForPMID(doc.pmid!)
 				vc.title = doc.title
 			}
 		}
@@ -133,10 +107,7 @@ class ADMDetailViewController: UITableViewController {
 	
 	func getURLForPMID(pmid: String) -> NSURL
 	{
-		let url = NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
+		let url = NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid!)
 		return url!
-//		return NSURL(fileURLWithPath: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
-//		return NSURL(string: "http://www.ncbi.nlm.nih.gov/pubmed/?term="+doc.pmid)
-		
 	}
 }

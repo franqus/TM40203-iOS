@@ -21,44 +21,22 @@ class ADMInformationManager: NSObject
 		super.init()
 		
 		let cSharpServer = ADMServer(name: "C#", url: "http://dhbw-master.cloudapp.net/lucene/Service1.svc/")
-		//http://dhbw-master.cloudapp.net/lucene/Service1.svc/query?search=authors%3ASaichanma&startIndex=0&length=10
-		
+		let javaServer = ADMServer(name: "Java", url: "http://185.44.105.219:8080/ADM-Java-Service/lucene/")
+
 		let bundle = NSBundle.mainBundle()
 		let path = bundle.pathForResource("20151107_pubmed_mock", ofType: "json")
-
-		let javaServer = ADMServer(name: "offline", url: path!)
 		let mockServer = ADMServer(name: "offline", url: path!)
-
 		
 		self.servers = [cSharpServer, javaServer, mockServer]
 		
 		self.query = ADMQuery(query: "")
 		self.results = Array()
-		
-//		sendQuery(self.query, server: self.servers[2], index: 0, length: 0)
+
 	}
-    
-    func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int) -> Bool{
-        return query.send(index, length: length, urlString: server.url)
-    }
 	
 	typealias ManagerResponseBlock = (response:AnyObject?, totalResults: Int, error:ErrorType?) -> Void
 	func sendQuery(query: ADMQuery, server: ADMServer, index: Int, length: Int, completionHandler: ManagerResponseBlock) -> Void
 	{
 		query.send(index, length: length, urlString: server.url, completionHandler: completionHandler)
 	}
-	
-//	func send(index: Int, length: Int, urlString: String, completionHandler: QueryResponseBlock) -> Void
-//	{
-//		let url = NSURL(string: urlString)
-//		let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-//			completionHandler(data: data, response: response, error: error)
-//			print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-//		}
-//		
-//		task.resume()
-//		//		completionHandler(response: <#T##AnyObject?#>, success: <#T##Bool?#>)
-//	}
-
-	
 }
