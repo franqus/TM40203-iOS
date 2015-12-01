@@ -14,12 +14,19 @@ class ADMQuery: NSObject{
     var results: Array<ADMDocument> = [ADMDocument]()
     var totalResults: Int = 0
     var resultsPerPage: Int = 0
+	var advancedSearch: Bool = false
 	
 	init(params: NSDictionary)
 	{
 		self.params = params
 	}
 	
+	init(params: NSDictionary, advancedSearch: Bool)
+	{
+		self.advancedSearch = advancedSearch
+		self.params = params
+	}
+
     init(query: String)
 	{
         self.query = query
@@ -129,9 +136,16 @@ class ADMQuery: NSObject{
 					{
 						if(subQueryStr.characters.count > 7)
 						{
-							subQueryStr.appendContentsOf(" OR ")
+							if(self.advancedSearch)
+							{
+								subQueryStr.appendContentsOf(" AND ")
+							}
+							else
+							{
+								subQueryStr.appendContentsOf(" OR ")
+							}
 						}
-						subQueryStr.appendContentsOf( String(format: "%@:%@*", stringSubKey, subKeyValue) )
+						subQueryStr.appendContentsOf( String(format: "%@:%@", stringSubKey, subKeyValue) )
 					}
 					
 				}

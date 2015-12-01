@@ -118,8 +118,8 @@ class ADMMainViewController: UIViewController, UITextFieldDelegate, UITableViewD
 					"abstract":self.tfSearch.text!]]
 		}
 		
-
-		let query: ADMQuery = ADMQuery.init(params: paramDict)
+		let searchModeFlag = self.searchMode == ADMSearchMode.ADMSearchModeAdvanced ? true : false
+		let query: ADMQuery = ADMQuery.init(params: paramDict, advancedSearch: searchModeFlag)
 		
 		self.aiRequest.startAnimating()
 		self.btnGo.hidden = true
